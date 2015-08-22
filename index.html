@@ -95,7 +95,7 @@ function displayColor(){
 	var hexIn = document.hexIn.hexIn.value;
 	var RGB = [(parseInt(hexIn.substring(0,2),16)/255),(parseInt(hexIn.substring(2,4),16)/255),(parseInt(hexIn.substring(4,6),16)/255)]
 	if(particleType==0){
-		RGB[0]--;
+		RGB[0]=1-(parseInt(hexIn.substring(0,2),16)/255);
 		particleName="reddust";
 	}
 	if(particleType==1){
