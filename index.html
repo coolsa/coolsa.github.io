@@ -1,1 +1,146 @@
-Hello World
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+<title>HEX to particle Converter</title>
+<link rel="shortcut icon" type="image/png" href=http://i.imgur.com/IIGPYYT.png>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body {
+	margin: 0 auto;
+	display: block;
+	color: white;
+	background: #464646;
+	font-family: Ubuntu;
+	text-align: center;
+}
+.header {
+	background: #464646;
+	height: 5%;
+	text-align: center;
+}
+.button {
+	background: transparent;
+	border: 0px solid;
+	outline: 0;
+	color: #D1D1D1;
+	font-family: Ubuntu;
+	font-size: 120%;
+	cursor: pointer;
+	margin-top: 4px;
+}
+.button:hover {
+	color: #F1F1F1;
+	font-size: 115%;
+}
+h1 {
+	color: #D1D1D1;
+	text-shadow: 2px 2px 3px #8D8D8D;
+	text-align: center;
+}
+h2 {
+	color: #D1D1D1;
+	text-align: center;
+}
+h3 {
+	color: #D1D1D1;
+	text-align: center;
+}
+.hexIn {
+	text-align: center;
+	outline: 0;
+	font-size: 25px;
+	border: 3px solid #95A5A6;
+	background-color: #4F4F4F;
+	color: white;
+}
+.particle {
+	background: #000000;
+	text-align: center;
+	font-size: 40px;
+	padding: 15px;
+	border-bottom: 5px solid;
+	border-top: 5px solid;
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	text-shadow: 
+		#000000 1px 1px, 
+		#000000 -1px 1px, 
+		#000000 -1px -1px, 
+		#000000 1px -1px;
+	border-color: #1F1F1F;
+}
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">;
+var particleType=0;
+var particleName="reddust";
+function displayColor(){
+	var hexIn = document.hexIn.hexIn.value;
+	var RGB = [(parseInt(hexIn.substring(0,2),16)/255),(parseInt(hexIn.substring(2,4),16)/255),(parseInt(hexIn.substring(4,6),16)/255)]
+	if(particleType==0){
+		RGB[0]--;
+	}
+	document.getElementById("particle").innerHTML = '/particle '+particleName+ ' ~ ~ ~ ' + RGB.join(" ") +' 1';
+	document.getElementById("particle").style.backgroundColor = hexIn;
+	console.log(RGB.join(" "));
+	return false;
+}
+
+function reddust(){
+	particleType=0;
+	displayColor();
+	// document[]()[]=RGB;
+}
+
+function mobSpell(){
+	particleType=1;
+	displayColor();
+	// document[]()[]=RGB;
+}
+
+function mobSpellAmbient(){
+	particleType=1;
+	displayColor();
+	// document[]()[]=RGB;
+}
+</script>
+
+<div class="noselect">
+<div class="header">
+<input class="button" type="button" value="reddust Particle" onclick="reddust();">
+<input class="button" type="button" value="mobSpell Particle" onclick="mobSpell();">
+<input class="button" type="button" value="mobSpellAmbient Particle" onclick="mobSpellAmbient();">
+</div>
+<br />
+<h1>HEX to Particle Converter</h1>
+<h2>Adapted by coolsa</h2>
+<h3>Based on Kn4cki's Code</h3>
+<a style="color:#757575">Paste your HEX color code here :</a><br />
+<form action="" method="post" name="hexIn">
+<input onkeyup="displayColor()" type="text" value=" " class="hexIn" size="5px" id="hexIn" autofocus>
+</form>
+<br />
+</div>
+<div class="particle" id="particle">
+/particle <a id="partic">reddust</a> ~ ~ ~ <a id="valeur">-1 0 0 1</a>
+</div>
+<div class="noselect">
+<br />
+<a style="color:#8D8D8D">reddust is tinted red, blues turn out purple sometimes.</a>
+<br /><hr>
+<h2>ChangeLog (28/08/15)</h2>
+<a style="color:#8D8D8D">New converter script</a><br />
+<a style="color:#8D8D8D">New UI</a><br />
+</div>
+</body>
+</html>
