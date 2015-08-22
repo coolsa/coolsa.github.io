@@ -96,8 +96,15 @@ function displayColor(){
 	var RGB = [(parseInt(hexIn.substring(0,2),16)/255),(parseInt(hexIn.substring(2,4),16)/255),(parseInt(hexIn.substring(4,6),16)/255)]
 	if(particleType==0){
 		RGB[0]--;
+		particleName="reddust";
 	}
-	document.getElementById("particle").innerHTML = '/particle '+particleName+ ' ~ ~ ~ ' + RGB.join(" ") +' 1';
+	if(particleType==1){
+		particleName="mobSpell";
+	}
+	if(particleType==2){
+		particleName="mobSpellAmbient";
+	}
+	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~ ~ ' + RGB.join(" ") +' 1';
 	document.getElementById("particle").style.backgroundColor = hexIn;
 	console.log(RGB.join(" "));
 	return false;
@@ -105,23 +112,17 @@ function displayColor(){
 
 function reddust(){
 	particleType=0;
-	particleName="reddust";
 	displayColor();
-	// document[]()[]=RGB;
 }
 
 function mobSpell(){
 	particleType=1;
-	particleName="mobSpell";
 	displayColor();
-	// document[]()[]=RGB;
 }
 
 function mobSpellAmbient(){
-	particleType=1;
-	particleName="mobSpellAmbient";
+	particleType=2;
 	displayColor();
-	// document[]()[]=RGB;
 }
 </script>
 
