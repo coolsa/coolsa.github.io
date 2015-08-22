@@ -104,7 +104,7 @@ function displayColor(){
 	if(particleType==2){
 		particleName="mobSpellAmbient";
 	}
-	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~ ~ ' + RGB.join(" ") +' 1';
+	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~1 ~ ' + RGB.join(" ") +' 0.001';
 	document.getElementById("particle").style.backgroundColor = hexIn;
 	console.log(RGB.join(" "));
 	return false;
@@ -143,7 +143,7 @@ function mobSpellAmbient(){
 <br />
 </div>
 <div class="particle" id="particle">
-/particle <a id="partic">reddust</a> ~ ~ ~ <a id="valeur">-1 0 0 1</a>
+/particle <a id="partic">reddust</a> ~ ~1 ~ <a id="valeur">-1 0 0 1</a>
 </div>
 <div class="noselect">
 <br />
