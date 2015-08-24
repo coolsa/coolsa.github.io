@@ -93,20 +93,24 @@ var particleType=0;
 var particleName="reddust";
 function displayColor(){
 	var hexIn = document.hexIn.hexIn.value;
-	var RGB = [(parseInt(hexIn.substring(0,2),16)/255),(parseInt(hexIn.substring(2,4),16)/255),(parseInt(hexIn.substring(4,6),16)/255)]
+	var RGB = [Math.round(parseInt(hexIn.substring(0,2),16)/25.5)/10,Math.round(parseInt(hexIn.substring(2,4),16)/25.5)/10,Math.round(parseInt(hexIn.substring(4,6),16)/25.5)/10]
 	if(particleType==0){
-		RGB[0]=1-(parseInt(hexIn.substring(0,2),16)/255);
+		particleRand=(((RGB[0]+RGB[1]+RGB[2])%1)>0)?1:-0.01;
+		RGB[0]=(RGB[0]>0)?RGB[0]:-1;// = (parseInt(hexIn.substring(0,2),16)/127.5)-1;
 		particleName="reddust";
 	}
 	if(particleType==1){
 		particleName="mobSpell";
+		particleRand=1;
 	}
 	if(particleType==2){
 		particleName="mobSpellAmbient";
+		particleRand=1;
 	}
-	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~1 ~ ' + RGB.join(" ") +' 0.001';
+	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~1 ~ ' + RGB.join(" ") + ' ' + particleRand;
 	document.getElementById("particle").style.backgroundColor = hexIn;
 	console.log(RGB.join(" "));
+	console.log((RGB[0]+RGB[1]+RGB[2]));
 	return false;
 }
 
@@ -143,7 +147,7 @@ function mobSpellAmbient(){
 <br />
 </div>
 <div class="particle" id="particle">
-/particle <a id="partic">reddust</a> ~ ~1 ~ <a id="valeur">-1 0 0 1</a>
+/particle <a id="partic">reddust</a> ~ ~1 ~ <a id="valeur">-1 0 0 -0.01</a>
 </div>
 <div class="noselect">
 <br />
