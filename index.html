@@ -101,7 +101,7 @@ function displayColor(){//this function takes the hex input, turns it into the c
 	} else {
 		particleRand=1;//if the particle is not reddust, there is no need for randomness.
 	}
-	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~1 ~ ' + RGB.join(" ") + ' ' + particleRand;//set the command up.
+	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~ ~ ' + RGB.join(" ") + ' ' + particleRand;//set the command up.
 	document.getElementById("particle").style.backgroundColor = hexIn;//set background color of command to the hex input.
 	console.log(RGB.join(" "));
 	console.log((RGB[0]+RGB[1]+RGB[2]));
@@ -144,7 +144,7 @@ function mobSpellAmbient(){
 <br />
 </div>
 <div class="particle" id="particle">
-/particle <a id="partic">reddust</a> ~ ~1 ~ <a id="valeur">-1 0 0 -0.01</a>
+/particle <a id="partic">reddust</a> ~ ~ ~ <a id="valeur">-1 0 0 -0.01</a>
 </div>
 <div class="noselect">
 <br />
