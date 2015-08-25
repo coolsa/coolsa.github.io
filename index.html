@@ -1,5 +1,5 @@
 <html>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+<head>
 <title>HEX to particle Converter</title>
 <link rel="shortcut icon" type="image/png" href=http://i.imgur.com/IIGPYYT.png>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -91,24 +91,18 @@ a:visited{
 <script type="text/javascript">;
 var particleType=0;
 var particleName="reddust";
-function displayColor(){
+function displayColor(){//this function takes the hex input, turns it into the command, 
 	var hexIn = document.hexIn.hexIn.value;
-	var RGB = [Math.round(parseInt(hexIn.substring(0,2),16)/25.5)/10,Math.round(parseInt(hexIn.substring(2,4),16)/25.5)/10,Math.round(parseInt(hexIn.substring(4,6),16)/25.5)/10]
-	if(particleType==0){
-		particleRand=(((RGB[0]+RGB[1]+RGB[2])%1)>0)?1:-0.01;
-		RGB[0]=(RGB[0]>0)?RGB[0]:-1;// = (parseInt(hexIn.substring(0,2),16)/127.5)-1;
-		particleName="reddust";
+	var RGB = [Math.round(parseInt(hexIn.substring(0,2),16)/2.55)/100,Math.round(parseInt(hexIn.substring(2,4),16)/2.55)/100,Math.round(parseInt(hexIn.substring(4,6),16)/2.55)/100]
+	//the above converts the hex input into numbers(substring) and then turns it into a percent/100. first one is red, second is green, third is blue
+	if(particleType==0){//if it is reddust, it will do these
+		particleRand=(((RGB[0]+RGB[1]+RGB[2])%1)>0)?1:-0.1;//if the total rgb does not have, it sets the particle randomness factor to -0.1. otherwise, it is 1. 
+		RGB[0]=(RGB[0]>0)?RGB[0]:-1;//if red is disabled, set it to -1, as reddust's 0 is set to 1, while its 1 is set to 1. 0.01 is not set to 1 though. 
+	} else {
+		particleRand=1;//if the particle is not reddust, there is no need for randomness.
 	}
-	if(particleType==1){
-		particleName="mobSpell";
-		particleRand=1;
-	}
-	if(particleType==2){
-		particleName="mobSpellAmbient";
-		particleRand=1;
-	}
-	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~1 ~ ' + RGB.join(" ") + ' ' + particleRand;
-	document.getElementById("particle").style.backgroundColor = hexIn;
+	document.getElementById("particle").innerHTML = '/particle ' + particleName + ' ~ ~1 ~ ' + RGB.join(" ") + ' ' + particleRand;//set the command up.
+	document.getElementById("particle").style.backgroundColor = hexIn;//set background color of command to the hex input.
 	console.log(RGB.join(" "));
 	console.log((RGB[0]+RGB[1]+RGB[2]));
 	return false;
@@ -116,16 +110,19 @@ function displayColor(){
 
 function reddust(){
 	particleType=0;
+	particleName="reddust";
 	displayColor();
 }
 
 function mobSpell(){
+	particleName="mobSpell"
 	particleType=1;
 	displayColor();
 }
 
 function mobSpellAmbient(){
 	particleType=2;
+	particleName="mobSpellAmbient";
 	displayColor();
 }
 </script>
@@ -151,11 +148,11 @@ function mobSpellAmbient(){
 </div>
 <div class="noselect">
 <br />
-<a style="color:#8D8D8D">reddust is tinted red, blues turn out purple sometimes.</a>
+<a style="color:#8D8D8D"href="https://www.github.com/coolsa/coolsa.github.io">Fork this on Github!</a>
 <br /><hr>
 <h2>ChangeLog (28/08/15)</h2>
 <a style="color:#8D8D8D">New converter script</a><br />
-<a style="color:#8D8D8D">Made reddust more precise</a><br />
+<a style="color:#8D8D8D">Made reddust more exact</a><br />
 <a style="color:#8D8D8D">New UI Colors</a><br />
 </div>
 </body>
